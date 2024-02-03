@@ -16,6 +16,8 @@ services:
     env_file: .env
     volumes:
       - static_volume:/backend_static
+    depends_on:
+      - db
   frontend:
     image: intensy/taski_frontend  # Качаем с Docker Hub
     env_file: .env
@@ -29,3 +31,5 @@ services:
       - static_volume:/staticfiles/
     ports:
       - 8000:80
+    depends_on:
+      - backend
